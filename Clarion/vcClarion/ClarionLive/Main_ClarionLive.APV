@@ -1,0 +1,486 @@
+[MODULE]
+NAME 'Main_ClarionLive.clw'
+[COMMON]
+FROM ABC GENERATED
+[PROCEDURE]
+NAME Main
+[COMMON]
+FROM ABC Window
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('Name:'),USE(?NameToAdd:Prompt)
+! ENTRY(@s20),USE(NameToAdd)
+[REPORTCONTROLS]
+! STRING(@s20),USE(NameToAdd)
+NameToAdd                STRING(20)
+!!> GUID('e429d3bf-081e-4c6a-9215-c0fb529ed0c2'),PROMPT('Name:'),HEADER('Name'),PICTURE(@s20),TYPEMODE(INS)
+[SCREENCONTROLS]
+! PROMPT('text To Say:'),USE(?textToSay:Prompt)
+! ENTRY(@s20),USE(textToSay)
+[REPORTCONTROLS]
+! STRING(@s20),USE(textToSay)
+textToSay                STRING(20)
+!!> GUID('f91b6a27-e9c9-4623-b972-7ba229cf0fba'),PROMPT('text To Say:'),HEADER('text To Say'),PICTURE(@s20),TYPEMODE(INS)
+[PROMPTS]
+%ClassItem UNIQUE DEFAULT  ('Default', 'WindowToolbar')
+%DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('WindowManager')
+WHEN  ('WindowToolbar') ('ToolbarClass')
+
+%ActualDefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('')
+WHEN  ('WindowToolbar') ('')
+
+%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 1
+WHEN  ('Default') ('Init {19}PROCEDURE(),BYTE,PROC,DERIVED', 'Kill {19}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'TakeAccepted {11}PROCEDURE(),BYTE,PROC,DERIVED', 'TakeEvent {14}PROCEDURE(),BYTE,PROC,DERIVED')
+
+%ProcedureParameters MULTI LONG  ()
+%ProcedureParameterName DEPEND %ProcedureParameters DEFAULT TIMES 0
+
+%ProcedureParameterOrigName DEPEND %ProcedureParameters DEFAULT TIMES 0
+
+%ProcedureParameterType DEPEND %ProcedureParameters DEFAULT TIMES 0
+
+%ProcedureParameterDefault DEPEND %ProcedureParameters DEFAULT TIMES 0
+
+%ProcedureParameterOmitted DEPEND %ProcedureParameters LONG TIMES 0
+
+%ProcedureParameterByReference DEPEND %ProcedureParameters LONG TIMES 0
+
+%ProcedureParameterConstant DEPEND %ProcedureParameters LONG TIMES 0
+
+%Parameters DEFAULT  ('')
+%ReturnValue FIELD  ()
+%WindowOperationMode DEFAULT  ('Use WINDOW setting')
+%INISaveWindow LONG  (0)
+%ProcedureDisableEnhanceFocus LONG  (0)
+%ProcedureUseEnterInsteadTabOverride LONG  (0)
+%WindowUseEnterInsteadTab LONG  (1)
+%ProcedureUseEnterInsteadTabExcludeListCombo LONG  (0)
+%ProcedureUseEnterInsteadTabEnableNextTabStop LONG  (0)
+%ProcedureUseEnterInsteadTabExcludeG LONG  (1)
+%WindowUseEnterInsteadTabExclude MULTI DEFAULT  ()
+%GlobalObject DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('NO')
+WHEN  ('WindowToolbar') ('NO')
+
+%ThisObjectName DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('ThisWindow')
+WHEN  ('WindowToolbar') ('Toolbar')
+
+%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (1)
+WHEN  ('WindowToolbar') (1)
+
+%UseABCBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (1)
+WHEN  ('WindowToolbar') (1)
+
+%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('')
+WHEN  ('WindowToolbar') ('')
+
+%ExtBaseClass DEPEND %ClassItem DEFAULT TIMES 0
+
+%BaseClassIncludeFile DEPEND %ClassItem DEFAULT TIMES 0
+
+%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (0)
+WHEN  ('WindowToolbar') (0)
+
+%NewMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewMethodName DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewMethodPrototype DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewClassProperty DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataType DEPEND %NewClassPropertyItems DEFAULT TIMES 1
+WHEN  ('WindowToolbar')TIMES 0
+
+%NewClassOtherType DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataIsRef DEPEND %NewClassPropertyItems LONG TIMES 0
+
+%NewClassDataSize DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim1 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim2 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim3 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim4 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%ClassMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassMethodName DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassMethodPrototype DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassProperty DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataType DEPEND %ClassPropertyItems DEFAULT TIMES 1
+WHEN  ('WindowToolbar')TIMES 0
+
+%ClassOtherType DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataIsRef DEPEND %ClassPropertyItems LONG TIMES 0
+
+%ClassDataSize DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim1 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim2 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim3 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%WindowStyles MULTI LONG  ()
+%WindowStyleFontName DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontNameVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontNameIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontSize DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontSizeVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontSizeIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontStyle DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontStyleVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontStyleIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontColor DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontCharSet DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundNormal DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundNormal DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleBackgroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundSelected DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundSelected DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleBackgroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStylePicture DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStylePictureVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStylePictureIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleOtherListboxes MULTI DEFAULT  ()
+%ProcedureAutoBindFields MULTI LONG  ()
+%ProcedureAutoBindField DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
+
+%ProcedureAutoBindFieldTPL DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
+
+%ProcedureAutoBindProcedures MULTI LONG  ()
+%ProcedureAutoBindProcedure DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
+
+%ProcedureAutoBindProcedureTPL DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
+
+%ProcedureAutoBindFieldsIgnored MULTI LONG  ()
+%ProcedureAutoBindFieldIgnored DEPEND %ProcedureAutoBindFieldsIgnored DEFAULT TIMES 0
+
+%ProcedureAutoBindProceduresIgnored MULTI LONG  ()
+%ProcedureAutoBindProcedureIgnored DEPEND %ProcedureAutoBindProceduresIgnored DEFAULT TIMES 0
+
+%ProcedureAutoBindValidToAddField LONG  (0)
+%ProcedureUserBindFields MULTI LONG  ()
+%ProcedureUserBindField DEPEND %ProcedureUserBindFields FIELD TIMES 0
+
+%ProcedureAutoBindFieldIgnore DEPEND %ProcedureAutoBindFields LONG TIMES 0
+
+%ProcedureUserBindProcedures MULTI LONG  ()
+%ProcedureUserBindProcedure DEPEND %ProcedureUserBindProcedures PROCEDURE TIMES 0
+
+%ProcedureAutoBindProcedureIgnore DEPEND %ProcedureAutoBindProcedures LONG TIMES 0
+
+%ProcedureUserBindExpressions MULTI LONG  ()
+%ProcedureUserBindExpressionName DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
+
+%ProcedureUserBindExpression DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
+
+%ExtUITabIcon DEPEND %Control DEFAULT TIMES 0
+
+%ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
+
+%ExtUITabStyle DEPEND %Control DEFAULT TIMES 3
+WHEN  ('') ('Default')
+WHEN  ('?OLE') ('Default')
+WHEN  ('?btnAddName') ('Default')
+
+%ButtonAction DEPEND %Control DEFAULT TIMES 4
+WHEN  ('') ('No Special Action')
+WHEN  ('?BUTTON1') ('No Special Action')
+WHEN  ('?OLE') ('No Special Action')
+WHEN  ('?btnAddName') ('No Special Action')
+
+%ButtonRunName DEPEND %Control DEFAULT TIMES 0
+
+%ButtonRunParameters DEPEND %Control DEFAULT TIMES 0
+
+%ButtonProcedure DEPEND %Control PROCEDURE TIMES 0
+
+%ButtonThread DEPEND %Control LONG TIMES 0
+
+%ButtonThreadStack DEPEND %Control DEFAULT TIMES 4
+WHEN  ('') ('25000')
+WHEN  ('?BUTTON1') ('25000')
+WHEN  ('?OLE') ('25000')
+WHEN  ('?btnAddName') ('25000')
+
+%ButtonParameters DEPEND %Control DEFAULT TIMES 0
+
+%ButtonReturnValueAssignment DEPEND %Control FIELD TIMES 0
+
+%ButtonReturnValueReferenceAssign DEPEND %Control LONG TIMES 0
+
+%ButtonRequest DEPEND %Control DEFAULT TIMES 4
+WHEN  ('') ('None')
+WHEN  ('?BUTTON1') ('None')
+WHEN  ('?OLE') ('None')
+WHEN  ('?btnAddName') ('None')
+
+%ButtonThreadParameters DEPEND %Control DEFAULT TIMES 0
+
+%ButtonThreadReturnValueAssignment DEPEND %Control FIELD TIMES 0
+
+%PreLookupKey DEPEND %Control KEY TIMES 0
+
+%PreLookupField DEPEND %Control COMPONENT TIMES 0
+
+%PreLookupProcedure DEPEND %Control PROCEDURE TIMES 0
+
+%PreLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
+
+%PostLookupKey DEPEND %Control KEY TIMES 0
+
+%PostLookupField DEPEND %Control COMPONENT TIMES 0
+
+%PostLookupProcedure DEPEND %Control PROCEDURE TIMES 0
+
+%PostLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
+
+%PostLookupDuringValidate DEPEND %Control LONG TIMES 4
+WHEN  ('') (1)
+WHEN  ('?NameToAdd') (1)
+WHEN  ('?OLE') (1)
+WHEN  ('?btnAddName') (1)
+
+%LookupAssign DEPEND %Control MULTI LONG TIMES 0
+
+%MoreTarget DEPEND %LookupAssign FIELD TIMES 0
+
+%MoreField DEPEND %LookupAssign DEFAULT TIMES 0
+
+%ForceWindowRefresh DEPEND %Control LONG TIMES 0
+
+%CheckedAssigns DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedAssignVariable DEPEND %CheckedAssigns FIELD TIMES 0
+
+%CheckedAssignValue DEPEND %CheckedAssigns DEFAULT TIMES 0
+
+%CheckedHides DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedControl DEPEND %CheckedHides DEFAULT TIMES 0
+
+%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 3
+WHEN  ('')TIMES 0
+WHEN  ('?OLE')TIMES 0
+WHEN  ('?btnAddName')TIMES 0
+
+%CheckedEnables DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedControl1 DEPEND %CheckedEnables DEFAULT TIMES 0
+
+%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 3
+WHEN  ('')TIMES 0
+WHEN  ('?OLE')TIMES 0
+WHEN  ('?btnAddName')TIMES 0
+
+%UncheckedAssigns DEPEND %Control MULTI LONG TIMES 0
+
+%UncheckedAssignVariable DEPEND %UncheckedAssigns FIELD TIMES 0
+
+%UncheckedAssignValue DEPEND %UncheckedAssigns DEFAULT TIMES 0
+
+%UnCheckedHides DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedControl DEPEND %UnCheckedHides DEFAULT TIMES 0
+
+%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 3
+WHEN  ('')TIMES 0
+WHEN  ('?OLE')TIMES 0
+WHEN  ('?btnAddName')TIMES 0
+
+%UnCheckedEnables DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedControl1 DEPEND %UnCheckedEnables DEFAULT TIMES 0
+
+%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 3
+WHEN  ('')TIMES 0
+WHEN  ('?OLE')TIMES 0
+WHEN  ('?btnAddName')TIMES 0
+
+%CheckedDisables DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedDisableControl DEPEND %CheckedDisables DEFAULT TIMES 0
+
+%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 3
+WHEN  ('')TIMES 0
+WHEN  ('?OLE')TIMES 0
+WHEN  ('?btnAddName')TIMES 0
+
+%UnCheckedDisables DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedDisableControl DEPEND %UnCheckedDisables DEFAULT TIMES 0
+
+%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 3
+WHEN  ('')TIMES 0
+WHEN  ('?OLE')TIMES 0
+WHEN  ('?btnAddName')TIMES 0
+
+%ITHasDllTemplate DEFAULT  ('')
+[EMBED]
+EMBED %BeforeOLEInitialization
+[INSTANCES]
+WHEN '1'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+ ?OLE{prop:Create} = 'ClarionLiveDemoControl'
+[END]
+[END]
+EMBED %WindowManagerMethodCodeSection
+[INSTANCES]
+WHEN 'TakeEvent'
+[INSTANCES]
+WHEN '(),BYTE'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 3200
+PROPERTY:END
+        case Event()
+
+        of EventTextToClarion
+            Message(GLO:PassedText)
+        END
+
+[END]
+[END]
+[END]
+EMBED %EventHandlerCode
+[INSTANCES]
+WHEN '1'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+        case OLEEvent
+
+        of ocxTextToClarion
+
+            if OcxGetParamCount(ref) THEN
+                GLO:PassedText = OcxGetParam(ref, 1)
+                post(EventTextToClarion)
+            END
+
+        END
+
+[END]
+[END]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 1300
+PROPERTY:END
+SomeMessageToPass   STRING('Does this work')
+[END]
+EMBED %ControlEventHandling
+[INSTANCES]
+WHEN '?btnAddName'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+if NameToAdd <> '' then
+    ?Ole{'AddNameToList(' & NameToAdd & ')'}
+    NameToAdd = ''
+    DISPLAY
+    Select(?NameToAdd)
+END
+[END]
+[END]
+WHEN '?BUTTON1'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+post(EVENT:CloseWindow)
+[END]
+[END]
+[END]
+[END]
+[ADDITION]
+NAME ABC OLEControl
+[INSTANCE]
+INSTANCE 1
+[PROMPTS]
+%GenerateEventCallback LONG  (1)
+%GenerateChangeCallback LONG  (0)
+%GenerateEditCallback LONG  (0)
+%IncludeOCXMap LONG  (1)
+%IncludeOCXEvent LONG  (1)
+%OLEBlobField FIELD  ()
+[WINDOW]
+Window  WINDOW('Clarion Live Com Demo'),AT(,,452,265),FONT('Microsoft Sans Serif',8),GRAY
+          OLE,AT(2,2,443,225),USE(?OLE),COMPATIBILITY(020H),#ORIG(?OLE),#SEQ(1),#ORDINAL(1)
+          END
+          PROMPT('Name:'),AT(2,231),USE(?NameToAdd:Prompt),#ORDINAL(2)
+          ENTRY(@s20),AT(28,230,169,10),USE(NameToAdd),#ORDINAL(3)
+          BUTTON('Add Name'),AT(202,230),USE(?btnAddName),#ORDINAL(4)
+          BUTTON('Close'),AT(406,231),USE(?BUTTON1),#ORDINAL(10000)
+        END
+
+[END]

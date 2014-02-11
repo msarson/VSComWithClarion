@@ -1,0 +1,16 @@
+[PROGRAM]
+[COMMON]
+FROM ABC ABC
+[EMBED]
+EMBED %AfterFileDeclarations
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+ocxTextToClarion    EQUATE(301)
+EventTextToClarion  EQUATE(EVENT:User + 1)
+GLO:PassedText      STRING(50)
+[END]
+[END]
+[END]
